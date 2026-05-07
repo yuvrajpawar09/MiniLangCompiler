@@ -1,0 +1,301 @@
+================================================================
+  MiniLang Compiler — 20 VALID Sample Programs (Jury / Viva Demo)
+================================================================
+Copy each program (between the ----- markers) into the editor and
+press Compile. Each one demonstrates a specific compiler feature.
+================================================================
+
+
+----------------------------------------------------------------
+SAMPLE 1 — Simplest declaration + assignment
+Demonstrates: lexer, symbol table, basic 3AC
+----------------------------------------------------------------
+INT a;
+a = 10;
+PRINT(a);
+
+
+----------------------------------------------------------------
+SAMPLE 2 — Multiple variable declarations
+Demonstrates: symbol table fills with multiple entries (memory @0, @4, @8)
+----------------------------------------------------------------
+INT x;
+INT y;
+INT z;
+x = 1;
+y = 2;
+z = 3;
+PRINT(x);
+PRINT(y);
+PRINT(z);
+
+
+----------------------------------------------------------------
+SAMPLE 3 — Constant folding (addition)
+Demonstrates: 5 + 3 collapses to 8 in optimised TAC
+----------------------------------------------------------------
+INT a;
+a = 5 + 3;
+PRINT(a);
+
+
+----------------------------------------------------------------
+SAMPLE 4 — Constant folding (multiplication & division)
+Demonstrates: chained constant folding
+----------------------------------------------------------------
+INT result;
+result = 10 * 4 / 2;
+PRINT(result);
+
+
+----------------------------------------------------------------
+SAMPLE 5 — Constant folding with subtraction
+Demonstrates: negative-direction folding
+----------------------------------------------------------------
+INT x;
+x = 100 - 25 - 15;
+PRINT(x);
+
+
+----------------------------------------------------------------
+SAMPLE 6 — Mixed expression with variables and constants
+Demonstrates: temporaries t1, t2 are generated
+----------------------------------------------------------------
+INT a;
+INT b;
+INT c;
+a = 5;
+b = 10;
+c = a + b * 2;
+PRINT(c);
+
+
+----------------------------------------------------------------
+SAMPLE 7 — Common Subexpression Elimination
+Demonstrates: a + b is computed only once
+----------------------------------------------------------------
+INT a;
+INT b;
+INT x;
+INT y;
+a = 5;
+b = 10;
+x = a + b;
+y = a + b;
+PRINT(x);
+PRINT(y);
+
+
+----------------------------------------------------------------
+SAMPLE 8 — Dead Code Elimination
+Demonstrates: first assignment to 'a' is removed
+----------------------------------------------------------------
+INT a;
+a = 5;
+a = 10;
+PRINT(a);
+
+
+----------------------------------------------------------------
+SAMPLE 9 — All three optimisations together
+Demonstrates: folding + DCE + CSE in one program
+----------------------------------------------------------------
+INT a;
+INT b;
+INT x;
+INT y;
+a = 2 + 3;
+b = 100;
+b = 20;
+x = a + b;
+y = a + b;
+PRINT(x);
+PRINT(y);
+
+
+----------------------------------------------------------------
+SAMPLE 10 — Simple IF statement
+Demonstrates: label generation L1, conditional jumps
+----------------------------------------------------------------
+INT a;
+INT b;
+a = 10;
+b = 20;
+IF(a < b){
+    a = a + 1;
+}
+PRINT(a);
+
+
+----------------------------------------------------------------
+SAMPLE 11 — IF with ELSE
+Demonstrates: goto + two labels (L1, L2)
+----------------------------------------------------------------
+INT n;
+INT result;
+n = 7;
+IF(n > 5){
+    result = 1;
+}ELSE{
+    result = 0;
+}
+PRINT(result);
+
+
+----------------------------------------------------------------
+SAMPLE 12 — IF with equality operator
+Demonstrates: == relational operator in condition
+----------------------------------------------------------------
+INT a;
+INT b;
+a = 5;
+b = 5;
+IF(a == b){
+    a = 100;
+}
+PRINT(a);
+
+
+----------------------------------------------------------------
+SAMPLE 13 — IF with not-equal operator
+Demonstrates: != operator
+----------------------------------------------------------------
+INT a;
+INT b;
+a = 10;
+b = 20;
+IF(a != b){
+    a = a + b;
+}
+PRINT(a);
+
+
+----------------------------------------------------------------
+SAMPLE 14 — Simple WHILE loop
+Demonstrates: loop labels, back-edge goto
+----------------------------------------------------------------
+INT i;
+i = 0;
+WHILE(i < 5){
+    i = i + 1;
+}
+PRINT(i);
+
+
+----------------------------------------------------------------
+SAMPLE 15 — WHILE loop with body operations
+Demonstrates: counter + accumulator pattern
+----------------------------------------------------------------
+INT i;
+INT sum;
+i = 1;
+sum = 0;
+WHILE(i <= 10){
+    sum = sum + i;
+    i = i + 1;
+}
+PRINT(sum);
+
+
+----------------------------------------------------------------
+SAMPLE 16 — Nested IF inside WHILE
+Demonstrates: nested control flow generates multiple labels
+----------------------------------------------------------------
+INT i;
+INT even_count;
+i = 0;
+even_count = 0;
+WHILE(i < 10){
+    IF(i >= 5){
+        even_count = even_count + 1;
+    }
+    i = i + 1;
+}
+PRINT(even_count);
+
+
+----------------------------------------------------------------
+SAMPLE 17 — Parenthesised expressions
+Demonstrates: factor → ( expr ) production rule
+----------------------------------------------------------------
+INT a;
+INT b;
+INT c;
+a = 2;
+b = 3;
+c = (a + b) * (a - b);
+PRINT(c);
+
+
+----------------------------------------------------------------
+SAMPLE 18 — Deeply nested expression
+Demonstrates: multiple temporaries t1...t5
+----------------------------------------------------------------
+INT x;
+INT a;
+INT b;
+INT c;
+INT d;
+a = 1;
+b = 2;
+c = 3;
+d = 4;
+x = ((a + b) * c) - (d + a);
+PRINT(x);
+
+
+----------------------------------------------------------------
+SAMPLE 19 — Factorial-style program
+Demonstrates: realistic algorithm using WHILE
+----------------------------------------------------------------
+INT n;
+INT fact;
+n = 5;
+fact = 1;
+WHILE(n > 1){
+    fact = fact * n;
+    n = n - 1;
+}
+PRINT(fact);
+
+
+----------------------------------------------------------------
+SAMPLE 20 — All features combined (showpiece)
+Demonstrates: every construct + all three optimisations
+----------------------------------------------------------------
+# Showpiece program demonstrating every MiniLang feature
+INT a;
+INT b;
+INT c;
+INT i;
+INT result;
+
+# constant folding
+a = 10 + 5;
+
+# dead code (first assignment removed)
+b = 99;
+b = 20;
+
+# common subexpression
+c = a + b;
+result = a + b;
+
+# IF / ELSE
+IF(result > 30){
+    result = result * 2;
+}ELSE{
+    result = 0;
+}
+
+# WHILE loop
+i = 0;
+WHILE(i < 3){
+    result = result + 1;
+    i = i + 1;
+}
+
+PRINT(a);
+PRINT(b);
+PRINT(c);
+PRINT(result);

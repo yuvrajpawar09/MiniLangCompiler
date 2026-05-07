@@ -1,0 +1,32 @@
+# Valid MiniLang program demonstrating every feature
+INT a;
+INT b;
+INT c;
+INT d;
+INT result;
+
+# Constant folding will collapse 5 + 3 to 8
+a = 5 + 3;
+
+# Common subexpression elimination should reuse a + b
+b = 10;
+c = a + b;
+d = a + b;
+
+# Dead code: the second assignment to result will be removed
+result = 100;
+result = c * 2;
+
+IF(result > 50){
+    result = result - 5;
+}ELSE{
+    result = 0;
+}
+
+WHILE(a < 20){
+    a = a + 1;
+}
+
+PRINT(result);
+PRINT(a);
+PRINT(d);

@@ -1,0 +1,14 @@
+# Invalid MiniLang program — exercises the error reporter
+INT a;
+INT b;
+
+a = 10 @ 5;          # lexical error: invalid symbol '@'
+
+b = a + ;            # syntax error: expression expected after '+'
+
+c = a + b            # syntax error: missing semicolon
+PRINT(c);            # semantic error: 'c' was never declared
+
+IF(a < b){
+    a = a + 1
+}                    # syntax error: missing semicolon inside the IF block

@@ -1,0 +1,8 @@
+# MiniLang Compiler — runtime requirements
+#
+# The compiler is intentionally built using ONLY the Python standard
+# library (Tkinter ships with CPython on Windows / macOS, and is part of
+# the `python3-tk` package on most Linux distributions).  No third-party
+# packages are required.
+#
+# Tested with Python 3.10 and Python 3.11.

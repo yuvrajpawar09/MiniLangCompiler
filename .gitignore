@@ -1,0 +1,101 @@
+# ---------------------------------------------------------------
+# .gitignore — MiniLang Compiler
+# ---------------------------------------------------------------
+
+# ----- Byte-compiled / optimized / DLL files -----
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# ----- Distribution / packaging -----
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# ----- Virtual environments -----
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# ----- Unit test / coverage -----
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+
+# ----- Type checkers / linters -----
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.pyre/
+.pytype/
+.ruff_cache/
+
+# ----- Jupyter / IPython -----
+.ipynb_checkpoints
+profile_default/
+ipython_config.py
+
+# ----- IDEs & editors -----
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.swo
+*~
+.spyderproject
+.spyproject
+
+# ----- OS-generated files -----
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# ----- Project-specific outputs -----
+# Compilation reports / TAC dumps generated from the GUI
+*.tac
+output/
+outputs/
+report.txt
+compilation_report.txt
+
+# Logs
+*.log
+logs/
+
+# Local user settings
+.local/

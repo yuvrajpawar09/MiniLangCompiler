@@ -1,0 +1,204 @@
+================================================================
+  MiniLang Compiler — 20 INVALID Sample Programs (Jury / Viva Demo)
+================================================================
+Each program demonstrates a specific kind of compiler error.
+The error type is listed; copy each program into the editor and
+press Compile to see the message in the Errors tab.
+================================================================
+
+
+----------------------------------------------------------------
+SAMPLE 1 — LEXICAL: Invalid symbol '@'
+Expected: Line 2: Invalid symbol '@'
+----------------------------------------------------------------
+INT a;
+a = 10 @ 5;
+PRINT(a);
+
+
+----------------------------------------------------------------
+SAMPLE 2 — LEXICAL: Invalid symbol '$'
+Expected: Line 2: Invalid symbol '$'
+----------------------------------------------------------------
+INT x;
+x = $100;
+PRINT(x);
+
+
+----------------------------------------------------------------
+SAMPLE 3 — LEXICAL: Malformed token (number followed by letter)
+Expected: Line 2: Malformed token '5abc'
+----------------------------------------------------------------
+INT a;
+a = 5abc;
+PRINT(a);
+
+
+----------------------------------------------------------------
+SAMPLE 4 — LEXICAL: Invalid symbol '&'
+Expected: Line 2: Invalid symbol '&'
+----------------------------------------------------------------
+INT a;
+INT b;
+a = 1 & 2;
+
+
+----------------------------------------------------------------
+SAMPLE 5 — SYNTAX: Missing semicolon after declaration
+Expected: Line 2: Expected ';' but found 'a'
+----------------------------------------------------------------
+INT a
+a = 10;
+PRINT(a);
+
+
+----------------------------------------------------------------
+SAMPLE 6 — SYNTAX: Missing semicolon after assignment
+Expected: Line 3: Expected ';' but found 'PRINT'
+----------------------------------------------------------------
+INT a;
+a = 10
+PRINT(a);
+
+
+----------------------------------------------------------------
+SAMPLE 7 — SYNTAX: Missing closing parenthesis
+Expected: Line 3: Expected ')' but found '{'
+----------------------------------------------------------------
+INT a;
+a = 5;
+IF(a < 10{
+    a = 0;
+}
+
+
+----------------------------------------------------------------
+SAMPLE 8 — SYNTAX: Missing opening brace
+Expected: Line 3: Expected '{' but found 'a'
+----------------------------------------------------------------
+INT a;
+a = 5;
+IF(a < 10)
+    a = 0;
+}
+
+
+----------------------------------------------------------------
+SAMPLE 9 — SYNTAX: Missing closing brace
+Expected: Line 5: Expected '}' but found 'EOF'
+----------------------------------------------------------------
+INT a;
+a = 5;
+IF(a < 10){
+    a = 0;
+
+
+----------------------------------------------------------------
+SAMPLE 10 — SYNTAX: Empty expression (operator without operand)
+Expected: Line 2: Unexpected token ';' in expression
+----------------------------------------------------------------
+INT a;
+a = 5 + ;
+PRINT(a);
+
+
+----------------------------------------------------------------
+SAMPLE 11 — SYNTAX: Missing relational operator in condition
+Expected: Line 3: Expected relational operator
+----------------------------------------------------------------
+INT a;
+a = 10;
+IF(a){
+    a = 0;
+}
+
+
+----------------------------------------------------------------
+SAMPLE 12 — SYNTAX: Wrong assignment operator
+Expected: Line 2: Expected '=' but found '=='
+----------------------------------------------------------------
+INT a;
+a == 10;
+PRINT(a);
+
+
+----------------------------------------------------------------
+SAMPLE 13 — SYNTAX: Missing condition expression
+Expected: Line 3: Unexpected token ')' in expression
+----------------------------------------------------------------
+INT a;
+a = 5;
+WHILE(){
+    a = a + 1;
+}
+
+
+----------------------------------------------------------------
+SAMPLE 14 — SYNTAX: Statement starting with a number
+Expected: Line 2: Unexpected token '5' — statement expected
+----------------------------------------------------------------
+INT a;
+5 = a;
+PRINT(a);
+
+
+----------------------------------------------------------------
+SAMPLE 15 — SEMANTIC: Variable used before declaration
+Expected: Line 1: Variable 'x' used before declaration
+----------------------------------------------------------------
+x = 10;
+PRINT(x);
+
+
+----------------------------------------------------------------
+SAMPLE 16 — SEMANTIC: Variable redeclaration
+Expected: Line 2: Variable 'a' already declared
+----------------------------------------------------------------
+INT a;
+INT a;
+a = 5;
+PRINT(a);
+
+
+----------------------------------------------------------------
+SAMPLE 17 — SEMANTIC: PRINT of undeclared variable
+Expected: Line 2: Variable 'b' used before declaration
+----------------------------------------------------------------
+INT a;
+PRINT(b);
+
+
+----------------------------------------------------------------
+SAMPLE 18 — SEMANTIC: Undeclared variable in expression
+Expected: Line 3: Variable 'undefined_var' used before declaration
+----------------------------------------------------------------
+INT a;
+INT b;
+b = a + undefined_var;
+PRINT(b);
+
+
+----------------------------------------------------------------
+SAMPLE 19 — MIXED: Multiple errors in one program
+Expected: lexical + syntax + semantic errors all reported
+----------------------------------------------------------------
+INT a;
+a = 5 @ 3;
+b = a + 1
+PRINT(c);
+
+
+----------------------------------------------------------------
+SAMPLE 20 — COMPLEX: Errors inside nested control flow
+Expected: missing semicolons + use-before-declare across blocks
+----------------------------------------------------------------
+INT a;
+INT b;
+a = 10;
+WHILE(a < 20){
+    b = a + 1
+    IF(b > c){
+        a = a + 1;
+    }
+}
+PRINT(a);
